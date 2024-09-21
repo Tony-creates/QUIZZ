@@ -1,0 +1,106 @@
+<div id="quiz-container">
+    <h1>Science Quiz</h1>
+    <img id="question-image" src="" alt="Question Image" style="width: 100%; height: auto; margin-bottom: 20px;">
+    <div id="question"></div>
+    <div id="options"></div>
+    <button id="next-btn" style="display: none;">Next Question</button>
+    <div id="score-container" style="display: none;">
+        <h2>Your Score: <span id="score"></span></h2>
+        <button id="restart-btn">Restart</button>
+    </div>
+</div>
+const questions = [
+    {
+        question: "What is the function of the ribosomes in a cell?",
+        options: ["Energy production", "Protein synthesis", "DNA replication", "Cell division"],
+        answer: "Protein synthesis",
+        image: "https://example.com/ribosome.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "What is the pH of a neutral solution at room temperature?",
+        options: ["0", "7", "14", "10"],
+        answer: "7",
+        image: "https://example.com/ph.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "Which of the following is the unit of force?",
+        options: ["Joule", "Newton", "Watt", "Pascal"],
+        answer: "Newton",
+        image: "https://example.com/force.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "What process do plants use to convert sunlight into energy?",
+        options: ["Respiration", "Photosynthesis", "Fermentation", "Decomposition"],
+        answer: "Photosynthesis",
+        image: "https://example.com/photosynthesis.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "Which gas is produced when an acid reacts with a metal?",
+        options: ["Oxygen", "Carbon dioxide", "Hydrogen", "Nitrogen"],
+        answer: "Hydrogen",
+        image: "https://example.com/hydrogen.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "What is the formula for calculating density?",
+        options: ["Mass × Volume", "Mass ÷ Volume", "Volume ÷ Mass", "Mass + Volume"],
+        answer: "Mass ÷ Volume",
+        image: "https://example.com/density.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "What is the main gas found in the Earth's atmosphere?",
+        options: ["Oxygen", "Hydrogen", "Nitrogen", "Carbon Dioxide"],
+        answer: "Nitrogen",
+        image: "https://example.com/atmosphere.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "Which organ is responsible for pumping blood around the body?",
+        options: ["Liver", "Lungs", "Heart", "Kidneys"],
+        answer: "Heart",
+        image: "https://example.com/heart.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "What type of bond is formed between two hydrogen atoms and one oxygen atom?",
+        options: ["Ionic bond", "Covalent bond", "Metallic bond", "Hydrogen bond"],
+        answer: "Covalent bond",
+        image: "https://example.com/covalent.jpg"  // Replace with a real image URL
+    },
+    {
+        question: "What is the law of conservation of mass?",
+        options: ["Mass cannot be created or destroyed", "Mass is always constant", "Mass increases in chemical reactions", "Mass can be lost"],
+        answer: "Mass cannot be created or destroyed",
+        image: "https://example.com/conservation.jpg"  // Replace with a real image URL
+    }
+];
+
+function showQuestion() {
+    const currentQuestion = questions[currentQuestionIndex];
+    questionElement.innerText = currentQuestion.question;
+    questionImage.src = currentQuestion.image; // Set the image for the question
+    optionsElement.innerHTML = "";
+
+    currentQuestion.options.forEach(option => {
+        const button = document.createElement("button");
+        button.innerText = option;
+        button.classList.add("option-btn");
+        button.addEventListener("click", () => selectOption(option, button));
+        optionsElement.appendChild(button);
+    });
+}
+#question-image {
+    border-radius: 8px;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.option-btn:hover {
+    background-color: #e0e0e0;
+}
